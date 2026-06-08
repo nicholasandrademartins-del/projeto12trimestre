@@ -66,6 +66,31 @@
             font-size: 14px;
             margin-bottom: 20px;
         }
+
+        /* Estilização do Botão de Curtida */
+        .btn-curtir {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #e8efe7; /* Fundo verde bem suave */
+            color: #2c5e3b; /* Texto verde botânico */
+            border: 1px solid #8fad88;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 20px;
+            cursor: pointer;
+            width: fit-content;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-curtir:hover {
+            background-color: #d1e0ce; /* Escurece levemente no hover */
+        }
+
+        .btn-curtir span {
+            color: #2e3d30;
+        }
     </style>
 </head>
 <body>
@@ -81,8 +106,20 @@
             <h2>Meu primeiro post</h2>
             <p class="artigo-autor">Por: Nicolas Martins</p>
             <p>Boas-vindas ao meu novo blog! Aqui vou compartilhar informações e dicas para a sua cannabis.</p>
+            
+            <button class="btn-curtir">❤️ <span>0</span></button>
         </div>
     </main>
+
+    <script>
+        const botao = document.querySelector(".btn-curtir");
+        botao.addEventListener("click", botaoClicado);
+
+        function botaoClicado() {
+            let texto = botao.querySelector("span");
+            texto.textContent++;
+        }
+    </script>
 
 </body>
 </html>
