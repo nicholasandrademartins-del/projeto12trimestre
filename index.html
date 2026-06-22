@@ -26,7 +26,7 @@
         }
 
         /* Logotipo */
-        img {
+        header img {
             width: 80px;
             height: 80px;
             margin-bottom: 12px;
@@ -39,13 +39,31 @@
             padding: 24px;
             background-color: #ffffff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 40px; /* Espaçamento entre os artigos */
         }
 
         /* Estrutura do Artigo */
         article {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
+            padding-bottom: 20px;
+        }
+
+        /* Linha divisória entre posts, exceto no último */
+        article:not(:last-child) {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* Imagem interna dos artigos */
+        article img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 8px;
         }
 
         h1 {
@@ -56,11 +74,11 @@
         h2 {
             font-size: 20px;
             color: #2c5e3b; 
-            margin-bottom: 12px;
+            margin-bottom: 4px;
         }
 
         p {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             line-height: 1.6;
         }
 
@@ -69,13 +87,22 @@
             font-weight: bold;
             color: #555555;
             font-size: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
+        }
+
+        /* Classe para a fonte do artigo */
+        .artigo-fonte {
+            font-size: 12px;
+            color: #777777;
+            font-style: italic;
+            margin-top: 5px;
         }
 
         /* Container para alinhar os botões lado a lado */
         .botoes-container {
             display: flex;
             gap: 12px;
+            margin-top: 8px;
         }
 
         /* Estilização dos Botões de Curtida */
@@ -119,7 +146,7 @@
     <header>
         <img src="logo-botanica.png" alt="Logotipo de uma folha estilizada">
         <h1>Meu blog informativo</h1>
-        <p>Espaço para compartilhamento de informações gerais e botânica.</p>
+        <p>Espaço para compartilhamento de informações gerais, legislação e botânica.</p>
     </header>
 
     <main>
@@ -133,10 +160,29 @@
                 <button class="btn-curtir">❤️ <span>0</span></button>
             </div>
         </article>
+
+        <article>
+            <img src="imagem-blog.png" alt="Ilustração sobre estudos de botânica e análise laboratorial">
+            <div>
+                <h2>Perspectivas sobre a regulamentação botânica no Brasil</h2>
+                <p class="artigo-autor">Por: Nicolas Martins</p>
+                <p>
+                    A análise de plantas e compostos vegetais tem avançado significativamente no cenário nacional. Debates atuais avaliam os impactos socioeconômicos e científicos de uma possível legalização e regulamentação controlada da cannabis.
+                    <br><br>
+                    Especialistas apontam que a padronização e o acompanhamento técnico rigoroso são passos fundamentais para garantir a segurança e o desenvolvimento científico no país.
+                </p>
+                <p class="artigo-fonte">Fonte: Centro de Estudos Botânicos e Sociais</p>
+                
+                <div class="botoes-container">
+                    <button class="btn-curtir">🍁 <span>0</span></button>
+                    <button class="btn-curtir">👍 <span>0</span></button>
+                </div>
+            </div>
+        </article>
     </main>
 
     <script>
-        // Seleciona todos os botões com a classe configurada
+        // Seleciona todos os botões com a classe configurada em ambos os artigos
         const botoes = document.querySelectorAll(".btn-curtir");
 
         // Aplica a lógica individualmente para cada botão encontrado
