@@ -10,19 +10,19 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f7f4; /* Fundo verde-claro acinzentado */
-            color: #2e3d30; /* Texto em tom verde-escuro */
+            background-color: #f4f7f4; 
+            color: #2e3d30; 
         }
 
         /* Cabeçalho */
         header {
-            background-color: #2c5e3b; /* Verde floresta/botânico */
+            background-color: #2c5e3b; 
             color: #FFFFFF;
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
             padding: 24px 16px;
-            border-bottom: 4px solid #8fad88; /* Linha de detalhe em verde-oliva claro */
+            border-bottom: 4px solid #8fad88; 
         }
 
         /* Logotipo */
@@ -39,8 +39,9 @@
             padding: 24px;
             background-color: #ffffff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex; /* Mantido o alinhamento flexível */
-            flex-direction: column; /* Garante o empilhamento vertical */
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; /* Espaçamento entre os elementos */
         }
 
         h1 {
@@ -50,7 +51,7 @@
 
         h2 {
             font-size: 20px;
-            color: #2c5e3b; /* Título do post combinando com o tema */
+            color: #2c5e3b; 
             margin-bottom: 12px;
         }
 
@@ -67,13 +68,13 @@
             margin-bottom: 20px;
         }
 
-        /* Estilização do Botão de Curtida */
+        /* Estilização Geral dos Botões de Curtida */
         .btn-curtir {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background-color: #e8efe7; /* Fundo verde bem suave */
-            color: #2c5e3b; /* Texto verde botânico */
+            background-color: #e8efe7; 
+            color: #2c5e3b; 
             border: 1px solid #8fad88;
             padding: 8px 16px;
             font-size: 14px;
@@ -85,7 +86,7 @@
         }
 
         .btn-curtir:hover {
-            background-color: #d1e0ce; /* Escurece levemente no hover */
+            background-color: #d1e0ce; 
         }
 
         .btn-curtir span {
@@ -96,7 +97,7 @@
 <body>
 
     <header>
-        <img src="logo-botanica.png" alt="Logotipo minimalista de uma folha estilizada com linhas finas, representando botânica e ciência, em tons de verde e branco.">
+        <img src="logo-botanica.png" alt="Logotipo de uma folha estilizada">
         <h1>Meu blog informativo</h1>
         <p>Vou compartilhar conhecimentos sobre a possível legalização da cannabis no Brasil</p>
     </header>
@@ -107,16 +108,28 @@
             <p class="artigo-autor">Por: Nicolas Martins</p>
             <p>Boas-vindas ao meu novo blog! Aqui vou compartilhar informações e dicas para a sua cannabis.</p>
             
-            <button class="btn-curtir">​🍁​ <span>0</span></button>
+            <button class="btn-curtir">🍁 <span>0</span></button>
+            <button class="btn-curtir">❤️ <span>0</span></button>
+            <button class="btn-curtir">👍 <span>0</span></button>
         </div>
     </main>
 
     <script>
-        const botao = document.querySelector(".btn-curtir");
-        botao.addEventListener("click", botaoClicado);
+        // Seleciona todos os botões que possuem a classe 'btn-curtir'
+        const botoes = document.querySelectorAll(".btn-curtir");
 
-        function botaoClicado() {
-            let texto = botao.querySelector("span");
+        // Passa por cada botão adicionando o evento de clique
+        botoes.forEach(function(botao) {
+            botao.addEventListener("click", botaoClicado);
+        });
+
+        // Função executada ao clicar em qualquer botão
+        function botaoClicado(event) {
+            // event.currentTarget garante que pegamos o botão que recebeu o clique
+            let botaoPrecionado = event.currentTarget;
+            let texto = botaoPrecionado.querySelector("span");
+            
+            // Incrementa o número atual em 1
             texto.textContent++;
         }
     </script>
