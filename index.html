@@ -39,9 +39,13 @@
             padding: 24px;
             background-color: #ffffff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px; /* Espaçamento entre os elementos */
+        }
+
+        /* Estrutura do Artigo */
+        article {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         h1 {
@@ -60,7 +64,7 @@
             line-height: 1.6;
         }
 
-        /* Classe para destacar o autor em negrito */
+        /* Classe para destacar o autor */
         .artigo-autor {
             font-weight: bold;
             color: #555555;
@@ -68,7 +72,13 @@
             margin-bottom: 20px;
         }
 
-        /* Estilização Geral dos Botões de Curtida */
+        /* Container para alinhar os botões lado a lado */
+        .botoes-container {
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Estilização dos Botões de Curtida */
         .btn-curtir {
             display: inline-flex;
             align-items: center;
@@ -82,11 +92,21 @@
             border-radius: 20px;
             cursor: pointer;
             width: fit-content;
-            transition: background-color 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .btn-curtir:hover {
             background-color: #d1e0ce; 
+        }
+
+        /* Estilo para quando o botão estiver ativo (curtido) */
+        .btn-curtir.ativo {
+            background-color: #2c5e3b;
+            color: #ffffff;
+        }
+
+        .btn-curtir.ativo span {
+            color: #ffffff;
         }
 
         .btn-curtir span {
@@ -99,70 +119,46 @@
     <header>
         <img src="logo-botanica.png" alt="Logotipo de uma folha estilizada">
         <h1>Meu blog informativo</h1>
-        <p>Vou compartilhar conhecimentos sobre a possível legalização da cannabis no Brasil</p>
+        <p>Espaço para compartilhamento de informações gerais e botânica.</p>
     </header>
 
     <main>
-        <div>
+        <article>
             <h2>Meu primeiro post</h2>
             <p class="artigo-autor">Por: Nicolas Martins</p>
-            <p>Boas-vindas ao meu novo blog! Aqui vou compartilhar informações e dicas para a sua cannabis.</p>
+            <p>Boas-vindas ao meu novo blog! Aqui vou compartilhar informações, estudos e novidades sobre botânica.</p>
             
-            <button class="btn-curtir">🍁 <span>0</span></button>
-            <button class="btn-curtir">🏝️​ <span>0</span></button>
-        </div>
+            <div class="botoes-container">
+                <button class="btn-curtir">🌱 <span>0</span></button>
+                <button class="btn-curtir">❤️ <span>0</span></button>
+            </div>
+        </article>
     </main>
 
     <script>
-        // Seleciona todos os botões que possuem a classe 'btn-curtir'
+        // Seleciona todos os botões com a classe configurada
         const botoes = document.querySelectorAll(".btn-curtir");
 
-        // Passa por cada botão adicionando o evento de clique
-        botoes.forEach(function(botao) {
-            botao.addEventListener("click", botaoClicado);
-        });
+        // Aplica a lógica individualmente para cada botão encontrado
+        botoes.forEach(function (botao) {
+            // Cada botão possui sua própria variável de controle de estado
+            let curtiu = false;
 
-        // Função executada ao clicar em qualquer botão
-        function botaoClicado(event) {
-            // event.currentTarget garante que pegamos o botão que recebeu o clique
-            let botaoPrecionado = event.currentTarget;
-            let texto = botaoPrecionado.querySelector("span");
-            
-            // Incrementa o número atual em 1
-            texto.textContent++;
-        }
+            botao.addEventListener("click", function() {
+                let texto = botao.querySelector("span");
+
+                if (curtiu === false) {
+                    texto.textContent++; // Incrementa o contador
+                    botao.classList.add("ativo"); // Aplica a cor de destaque
+                    curtiu = true; // Altera o estado para curtido
+                } else {
+                    texto.textContent--; // Decrementa o contador
+                    botao.classList.remove("ativo"); // Remove a cor de destaque
+                    curtiu = false; // Altera o estado para não curtido
+                }
+            });
+        });
     </script>
 
 </body>
-</html>article {
-display: flex;
-}botoes.forEach(function (botao) {
-let curtiu = false;
-
-botao.addEventListener("click", botaoClicado);
-
-function botaoClicado() {
-console.log("fui clicado");
-let texto = botao.querySelector("span");
-texto.textContent++;
-}
-});function botaoClicado() {
-console.log("fui clicado");
-let texto = botao.querySelector("span");
-
-if (curtiu === false) {
-texto.textContent++;
-curtiu = true;
-}
-}function botaoClicado() {
-console.log("fui clicado");
-let texto = botao.querySelector("span");
-
-if (curtiu === false) {
-texto.textContent++;
-curtiu = true;
-} else {
-texto.textContent--;
-curtiu = false;
-}
-}
+</html>
