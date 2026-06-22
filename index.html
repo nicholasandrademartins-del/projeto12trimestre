@@ -12,6 +12,7 @@
             padding: 0;
             background-color: #f4f7f4; 
             color: #2e3d30; 
+            max-width: 100vw; /* Integrado conforme rascunho */
         }
 
         /* Cabeçalho */
@@ -32,38 +33,42 @@
             margin-bottom: 12px;
         }
 
-        /* Conteúdo Principal */
+        /* Conteúdo Principal organizado em Flexbox responsivo */
         main {
             max-width: 800px;
             margin: 20px auto;
             padding: 24px;
             background-color: #ffffff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            gap: 40px; /* Espaçamento entre os artigos */
+            display: flex;       /* Integrado conforme rascunho */
+            flex-wrap: wrap;     /* Integrado conforme rascunho */
+            gap: 16px; 
+            justify-content: center;
         }
 
-        /* Estrutura do Artigo */
+        /* Estrutura do Artigo em formato de card centralizado */
         article {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            padding-bottom: 20px;
-        }
-
-        /* Linha divisória entre posts, exceto no último */
-        article:not(:last-child) {
-            border-bottom: 1px solid #e0e0e0;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            border: 1px solid #183C63; /* Borda azul integrada conforme rascunho */
+            margin: 16px;
+            gap: 16px;
+            padding: 16px;
+            flex: 1 1 25%;             /* Base de tamanho integrada conforme rascunho */
+            box-sizing: border-box;
+            border-radius: 8px;
+            background-color: #fff;
         }
 
         /* Imagem interna dos artigos */
         article img {
             width: 100%;
-            max-height: 300px;
+            max-height: 150px;
             object-fit: cover;
             border-radius: 8px;
-            margin-bottom: 8px;
         }
 
         h1 {
@@ -72,37 +77,37 @@
         }
 
         h2 {
-            font-size: 20px;
+            font-size: 18px;
             color: #2c5e3b; 
-            margin-bottom: 4px;
+            margin: 0;
         }
 
         p {
-            margin-bottom: 10px;
+            margin: 0;
             line-height: 1.6;
+            font-size: 14px;
         }
 
         /* Classe para destacar o autor */
         .artigo-autor {
             font-weight: bold;
             color: #555555;
-            font-size: 14px;
-            margin-bottom: 12px;
+            font-size: 13px;
         }
 
         /* Classe para a fonte do artigo */
         .artigo-fonte {
-            font-size: 12px;
+            font-size: 11px;
             color: #777777;
             font-style: italic;
-            margin-top: 5px;
         }
 
         /* Container para alinhar os botões lado a lado */
         .botoes-container {
             display: flex;
             gap: 12px;
-            margin-top: 8px;
+            margin-top: auto; /* Garante que os botões fiquem alinhados na base do card */
+            padding-top: 8px;
         }
 
         /* Estilização dos Botões de Curtida */
@@ -163,20 +168,16 @@
 
         <article>
             <img src="imagem-blog.png" alt="Ilustração sobre estudos de botânica e análise laboratorial">
-            <div>
-                <h2>Perspectivas sobre a regulamentação botânica no Brasil</h2>
-                <p class="artigo-autor">Por: Nicolas Martins</p>
-                <p>
-                    A análise de plantas e compostos vegetais tem avançado significativamente no cenário nacional. Debates atuais avaliam os impactos socioeconômicos e científicos de uma possível legalização e regulamentação controlada da cannabis.
-                    <br><br>
-                    Especialistas apontam que a padronização e o acompanhamento técnico rigoroso são passos fundamentais para garantir a segurança e o desenvolvimento científico no país.
-                </p>
-                <p class="artigo-fonte">Fonte: Centro de Estudos Botânicos e Sociais</p>
-                
-                <div class="botoes-container">
-                    <button class="btn-curtir">🍁 <span>0</span></button>
-                    <button class="btn-curtir">👍 <span>0</span></button>
-                </div>
+            <h2>Perspectivas sobre a regulamentação botânica</h2>
+            <p class="artigo-autor">Por: Nicolas Martins</p>
+            <p>
+                A análise de plantas e compostos vegetais tem avançado significativamente no cenário nacional. Debates atuais avaliam os impactos socioeconômicos e científicos de uma regulamentação controlada.
+            </p>
+            <p class="artigo-fonte">Fonte: Centro de Estudos Botânicos e Sociais</p>
+            
+            <div class="botoes-container">
+                <button class="btn-curtir">🍁 <span>0</span></button>
+                <button class="btn-curtir">👍 <span>0</span></button>
             </div>
         </article>
     </main>
